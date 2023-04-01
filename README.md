@@ -1,11 +1,6 @@
 # mailrelay
 
-[![Build Status](https://travis-ci.org/wiggin77/mailrelay.svg?branch=master)](https://travis-ci.org/wiggin77/mailrelay)
-[![Report Card](https://goreportcard.com/badge/github.com/wiggin77/mailrelay)](https://goreportcard.com/report/github.com/wiggin77/mailrelay)
-
 `mailrelay` is a simple mail relay that can take unauthenticated SMTP emails (e.g. over port 25) and relay them to authenticated, TLS-enabled SMTP servers. Plus it's easy to configure.
-
-Prebuilt binaries are available [here](https://github.com/wiggin77/mailrelay/releases/latest) for Linux, MacOS, Windows, OpenBSD.
 
 ## Use case
 
@@ -101,6 +96,6 @@ sudo systemctl enable mailrelay
 
 Now `mailrelay` runs as a service daemon and will automatically start after reboot.
 
-## Feedback
+## License
 
-Send any questions or comments to wiggin77@warpmail.net
+MIT License

@@ -26,7 +26,8 @@ func sendMail(e *mail.Envelope, config *relayConfig) error {
 	msg.Write(e.Data.Bytes())
 	msg.WriteString("\r\n")
 
-	Logger.Infof("starting email send -- from:%s, starttls:%t", e.MailFrom.String(), config.STARTTLS)
+	Logger.Infof("starting email send -- from:%s, tls:%t, starttls:%t",
+		e.MailFrom.String(), config.TLS, config.STARTTLS)
 	var err error
 	var conn net.Conn
 	var client *smtp.Client
@@ -37,13 +38,13 @@ func sendMail(e *mail.Envelope, config *relayConfig) error {
 		ServerName:         config.Server,
 	}
 
-	if config.STARTTLS {
-		if conn, err = net.Dial("tcp", server); err != nil {
-			return errors.Wrap(err, "dial error")
-		}
-	} else {
+	if config.TLS {
 		if conn, err = tls.Dial("tcp", server, tlsconfig); err != nil {
 			return errors.Wrap(err, "TLS dial error")
+		}
+	} else {
+		if conn, err = net.Dial("tcp", server); err != nil {
+			return errors.Wrap(err, "dial error")
 		}
 	}
 

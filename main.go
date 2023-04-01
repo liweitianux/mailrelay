@@ -26,6 +26,7 @@ var Logger log.Logger
 type mailRelayConfig struct {
 	SMTPServer        string   `json:"smtp_server"`
 	SMTPPort          int      `json:"smtp_port"`
+	SMTPTLS           bool     `json:"smtp_tls"`
 	SMTPStartTLS      bool     `json:"smtp_starttls"`
 	SMTPLoginAuthType bool     `json:"smtp_login_auth_type"`
 	SMTPUsername      string   `json:"smtp_username"`
@@ -117,6 +118,7 @@ func loadConfig(path string) (*mailRelayConfig, error) {
 
 func configDefaults(config *mailRelayConfig) {
 	config.SMTPPort = DefaultSTMPPort
+	config.SMTPTLS = true
 	config.SMTPStartTLS = false
 	config.SMTPLoginAuthType = false
 	config.MaxEmailSize = DefaultMaxEmailSize

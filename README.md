@@ -41,6 +41,7 @@ On local PC (192.168.1.54) create file `/etc/mailrelay.json` with contents:
 {
     "smtp_server":   "smtp.fastmail.com",
     "smtp_port":     465,
+    "smtp_tls":      true,
     "smtp_starttls": false,
     "smtp_username": "username@fastmail.com",
     "smtp_password": "secretAppPassword",
